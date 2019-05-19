@@ -1,0 +1,72 @@
+    {
+      "ipath": "hysds::data/EO1_Hyperion-L1R",
+      "match_pattern": "/(?P<short_name>EO1_Hyperion)-(?P<product_type>L1R>-(?P<year>\\d{4})(?P<month>\\d{2})(?P<day>\\d{2})(?P<rest>.*)-(?P<version>.*?)$",
+      "alt_match_pattern": null,
+      "extractor": null,
+      "level": "l2",
+      "type": "granule",
+      "publish": {
+        "s3-profile-name": "default",
+        "location": "s3://{{ DATASET_S3_ENDPOINT }}:80/{{ DATASET_BUCKET }}/products/{short_name}/{product_type}/{version}/{year}/{month}/{day}",
+        "urls": [
+          "http://{{ DATASET_BUCKET }}.{{ DATASET_S3_WEBSITE_ENDPOINT }}/products/{short_name}/{product_type}/{version}/{year}/{month}/{day}",
+          "s3://{{ DATASET_S3_ENDPOINT }}:80/{{ DATASET_BUCKET }}/products/{short_name}/{product_type}/{version}/{year}/{month}/{day}"
+        ]
+      },
+      "browse": {
+        "s3-profile-name": "default",
+        "location": "s3://{{ DATASET_S3_ENDPOINT }}:80/{{ DATASET_BUCKET }}/browse/{short_name}/{product_type}/{version}/{year}/{month}/{day}",
+        "urls": [
+          "http://{{ DATASET_BUCKET }}.{{ DATASET_S3_WEBSITE_ENDPOINT }}/browse/{short_name}/{product_type}/{version}/{year}/{month}/{day}",
+          "s3://{{ DATASET_S3_ENDPOINT }}:80/{{ DATASET_BUCKET }}/browse/{short_name}/{product_type}/{version}/{year}/{month}/{day}"
+        ]
+      }
+    },
+    {
+      "ipath": "hysds::data/EO1_Hyperion-L1Gst",
+      "match_pattern": "/(?P<short_name>EO1_Hyperion)-(?P<product_type>L1Gst>-(?P<year>\\d{4})(?P<month>\\d{2})(?P<day>\\d{2})(?P<rest>.*)-(?P<version>.*?)$",
+      "alt_match_pattern": null,
+      "extractor": null,
+      "level": "l2",
+      "type": "granule",
+      "publish": {
+        "s3-profile-name": "default",
+        "location": "s3://{{ DATASET_S3_ENDPOINT }}:80/{{ DATASET_BUCKET }}/products/{short_name}/{product_type}/{version}/{year}/{month}/{day}",
+        "urls": [
+          "http://{{ DATASET_BUCKET }}.{{ DATASET_S3_WEBSITE_ENDPOINT }}/products/{short_name}/{product_type}/{version}/{year}/{month}/{day}",
+          "s3://{{ DATASET_S3_ENDPOINT }}:80/{{ DATASET_BUCKET }}/products/{short_name}/{product_type}/{version}/{year}/{month}/{day}"
+        ]
+      },
+      "browse": {
+        "s3-profile-name": "default",
+        "location": "s3://{{ DATASET_S3_ENDPOINT }}:80/{{ DATASET_BUCKET }}/browse/{short_name}/{product_type}/{version}/{year}/{month}/{day}",
+        "urls": [
+          "http://{{ DATASET_BUCKET }}.{{ DATASET_S3_WEBSITE_ENDPOINT }}/browse/{short_name}/{product_type}/{version}/{year}/{month}/{day}",
+          "s3://{{ DATASET_S3_ENDPOINT }}:80/{{ DATASET_BUCKET }}/browse/{short_name}/{product_type}/{version}/{year}/{month}/{day}"
+        ]
+      }
+    },
+    {
+      "ipath": "hysds::data/EO1_Hyperion-L1T",
+      "match_pattern": "/(?P<short_name>EO1_Hyperion)-(?P<product_type>L1T>-(?P<year>\\d{4})(?P<month>\\d{2})(?P<day>\\d{2})(?P<rest>.*)-(?P<version>.*?)$",
+      "alt_match_pattern": null,
+      "extractor": null,
+      "level": "l2",
+      "type": "granule",
+      "publish": {
+        "s3-profile-name": "default",
+        "location": "s3://{{ DATASET_S3_ENDPOINT }}:80/{{ DATASET_BUCKET }}/products/{short_name}/{product_type}/{version}/{year}/{month}/{day}",
+        "urls": [
+          "http://{{ DATASET_BUCKET }}.{{ DATASET_S3_WEBSITE_ENDPOINT }}/products/{short_name}/{product_type}/{version}/{year}/{month}/{day}",
+          "s3://{{ DATASET_S3_ENDPOINT }}:80/{{ DATASET_BUCKET }}/products/{short_name}/{product_type}/{version}/{year}/{month}/{day}"
+        ]
+      },
+      "browse": {
+        "s3-profile-name": "default",
+        "location": "s3://{{ DATASET_S3_ENDPOINT }}:80/{{ DATASET_BUCKET }}/browse/{short_name}/{product_type}/{version}/{year}/{month}/{day}",
+        "urls": [
+          "http://{{ DATASET_BUCKET }}.{{ DATASET_S3_WEBSITE_ENDPOINT }}/browse/{short_name}/{product_type}/{version}/{year}/{month}/{day}",
+          "s3://{{ DATASET_S3_ENDPOINT }}:80/{{ DATASET_BUCKET }}/browse/{short_name}/{product_type}/{version}/{year}/{month}/{day}"
+        ]
+      }
+    }

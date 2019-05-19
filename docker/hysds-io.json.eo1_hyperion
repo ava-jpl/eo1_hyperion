@@ -1,0 +1,37 @@
+{
+    "label": "Ingest - EO1_Hyperion",
+    "submission_type": "iteration",
+    "enable_dedup": false,
+    "params" : [
+    {
+      "name": "prod_type",
+      "from": "dataset_jpath:_type"
+    },
+    {
+      "name": "product_format",
+      "from": "submitter",
+      "type": "enum",
+      "enumerables": ["L1R", "L1T", "L1Gst"]
+    },
+    {
+      "name": "metadata",
+      "from": "dataset_jpath:_source.metadata"
+    },
+    {
+      "name": "starttime",
+      "from": "dataset_jpath:_source.starttime"
+    },
+    {
+      "name": "endtime",
+      "from": "dataset_jpath:_source.endtime"
+    },
+    {
+      "name": "location",
+      "from": "dataset_jpath:_source.location"
+    },
+    {
+      "name": "short_name",
+      "from": "dataset_jpath:_source.metadata.short_name"
+    }
+  ]
+}
