@@ -80,7 +80,7 @@ def generate_browse(product_dir, prod_id):
             #conver to png
             os.system("convert {} -transparent black {}".format(product_path, browse_path))
             #convert to small png
-            os.system("convert {} -transparent black -resize 300x300 {}".format(product_path, browse_small_path))
+            os.system("convert {} -transparent black -resize 700 {}".format(product_path, browse_small_path))
             if os.path.exists(browse_path) and os.path.exists(browse_small_path):
                 return
 
