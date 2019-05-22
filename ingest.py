@@ -60,6 +60,29 @@ def ingest_product(shortname, starttime, endtime, location, metadata, prod_forma
         dst, met = gen_jsons(prod_id, starttime, endtime, location, metadata)
         # save the metadata fo;es
         save_product_met(prod_id, dst, met)
+        generate_browse(prod_id, prod_id)
+
+def generate_browse(product_dir, prod_id):
+    '''generates a browse from an input product path. prioritize jpegs, then pngs, then tifs'''
+    allowed_extensions = ['jpg', 'jpeg', 'png', 'tif']
+    files = [f for f in os.listdir(product_dir) if os.path.isfile(os.path.join(product_dir, f))]
+    for allowed_extension in allowed_extensions:
+        for fil in files:
+            product_path = os.path.join(product_dir, fil)
+            extension = os.path.splitext(fil)[1].strip('.').lower()
+            if not extension == allowed_extension:
+                continue
+            #attempt to generate browse
+            browse_path = os.path.join(prod_id, '{}.browse.png'.format(prod_id))
+            browse_small_path = os.path.join(prod_id, '{}.browse_small.png'.format(prod_id))
+            if os.path.exists(browse_path):
+                return
+            #conver to png
+            os.system("convert {} -transparent black {}".format(product_path, browse_path))
+            #convert to small png
+            os.system("convert {} -transparent black -resize 300x300 {}".format(product_path, browse_small_path))
+            if os.path.exists(browse_path) and os.path.exists(browse_small_path):
+                return
 
 def gen_prod_id(shortname, starttime, endtime, prod_format):
     '''generates the product id from the input metadata & params'''
