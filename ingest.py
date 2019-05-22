@@ -34,7 +34,6 @@ def main():
     prod_format = ctx.get("product_format", False)
     if not prod_format or not prod_format in ALLOWED_PRODUCT_FORMATS:
         raise Exception("input product format of {} is invalid. Must be one of type: {}".format(prod_format, ', '.join(ALLOWED_PRODUCT_FORMATS)))
-    INDEX = INDEX.format(prod_format)
     starttime = ctx.get("starttime", False)
     endtime = ctx.get("endtime", False)
     location = ctx.get("location", False)
@@ -47,7 +46,7 @@ def ingest_product(shortname, starttime, endtime, location, metadata, prod_forma
     # generate product id
     prod_id = gen_prod_id(shortname, starttime, endtime, prod_format)
     # determine if product exists on grq
-    if exists(prod_id):
+    if exists(prod_id, prod_format):
         print('product with id: {} already exists. Exiting.'.format(prod_id))
         return
     #attempt to localize product
@@ -69,10 +68,11 @@ def gen_prod_id(shortname, starttime, endtime, prod_format):
     time_str = '{}_{}'.format(start, end)
     return PROD.format(shortname, prod_format, time_str, VERSION)
 
-def exists(uid):
+def exists(uid, prod_format):
     '''queries grq to see if the input id exists. Returns True if it does, False if not'''
+    idx = INDEX.format(prod_format)
     grq_ip = app.conf['GRQ_ES_URL']#.replace(':9200', '').replace('http://', 'https://')
-    grq_url = '{0}/{1}/_search'.format(grq_ip, INDEX)
+    grq_url = '{0}/{1}/_search'.format(grq_ip, idx)
     es_query = {"query": {"bool": {"must": [{"term": {"id.raw": uid}}]}}, "from": 0, "size": 1}
     return query_es(grq_url, es_query)
 
